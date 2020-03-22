@@ -11,3 +11,7 @@ curl -H "Accept: application/zip" "$TABULA_JAR_URL$TABULA_VERSION" -o tabula.jar
 
 echo "Copying tabula.jar to app/vendor"
 cp tabula.jar ../app/vendor/tabula.jar
+
+if [ ! -f /app/vendor/tabula.jar ]; then
+  echo "tabula.jar did not copy!"
+fi
