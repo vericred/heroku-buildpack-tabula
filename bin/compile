@@ -2,16 +2,22 @@
 
 TABULA_VERSION='v1.0.3/tabula-1.0.3-jar-with-dependencies.jar'
 TABULA_JAR_URL='https://github.com/tabulapdf/tabula-java/releases/download/'
+BUILD_DIR=$1
 
-echo "Serving files from /tmp on $PORT"
-cd /tmp
+echo "Creating directory $BUILD_DIR/tmp"
+mkdir -p "$BUILD_DIR/tmp/"
+
+cd "$BUILD_DIR/tmp"
 
 echo "Downloading $TABULA_JAR_URL$TABULA_VERSION"
 curl -H "Accept: application/zip" "$TABULA_JAR_URL$TABULA_VERSION" -o tabula.jar
 
-echo "Copying tabula.jar to app/vendor"
-cp tabula.jar ../app/vendor/tabula.jar
+echo "Creating $BUILD_DIR/vendor"
+mkdir -p "$BUILD_DIR/vendor/"
 
-if [ ! -f /app/vendor/tabula.jar ]; then
-  echo "tabula.jar did not copy!"
+echo "Copying tabula.jar to $BUILD_DIR/app/vendor"
+cp tabula.jar "$BUILD_DIR/vendor/tabula.jar"
+
+if [ ! -f $BUILD_DIR/vendor/tabula.jar ]; then
+  echo "tabula.jar did not copy correctly!"
 fi
