@@ -10,7 +10,7 @@ mkdir -p "$BUILD_DIR/tmp/"
 cd "$BUILD_DIR/tmp"
 
 echo "Downloading $TABULA_JAR_URL$TABULA_VERSION"
-curl -H "Accept: application/zip" "$TABULA_JAR_URL$TABULA_VERSION" -o tabula.jar
+wget -O tabula.jar "$TABULA_JAR_URL$TABULA_VERSION"
 
 echo "Creating $BUILD_DIR/vendor"
 mkdir -p "$BUILD_DIR/vendor/"
