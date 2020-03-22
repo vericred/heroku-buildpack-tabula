@@ -1,0 +1,13 @@
+#!/bin/bash
+
+TABULA_VERSION='v1.0.3/tabula-1.0.3-jar-with-dependencies.jar'
+TABULA_JAR_URL='https://github.com/tabulapdf/tabula-java/releases/download/'
+
+echo "Serving files from /tmp on $PORT"
+cd /tmp
+
+echo "Downloading $TABULA_JAR_URL$TABULA_VERSION"
+curl -H "Accept: application/zip" "$TABULA_JAR_URL$TABULA_VERSION" -o tabula.jar
+
+echo "Copying tabula.jar to app/vendor"
+cp tabula.jar ../app/vendor/tabula.jar
